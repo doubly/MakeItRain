@@ -1,0 +1,16 @@
+[
+{
+  "modid": "makeitrain",
+  "name": "Make It Rain",
+  "description": "Make it Rain",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Knaught"],
+  "credits": "...",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
