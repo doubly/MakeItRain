@@ -1,6 +1,4 @@
-package MakeItRain;
-
-import io.knaught.makeItRain.MakeItRain;
+package MakeItRain.Proxy;
 
 public class CommonProxy {
 

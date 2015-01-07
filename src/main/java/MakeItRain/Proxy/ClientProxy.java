@@ -1,6 +1,4 @@
-package MakeItRain.client;
-
-import MakeItRain.CommonProxy;
+package MakeItRain.Proxy;
 
 public class ClientProxy extends CommonProxy {
 

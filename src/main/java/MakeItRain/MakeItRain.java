@@ -1,54 +1,45 @@
 package MakeItRain;
 
+import MakeItRain.Data.ModData;
+import MakeItRain.Proxy.CommonProxy;
 import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-@Mod(modid = MakeItRain.MOD_ID, version = MakeItRain.VERSION, name = MakeItRain.NAME)
+@Mod(modid = ModData.ID, name = ModData.NAME, version = ModData.VERSION, dependencies = ModData.DEPENDENCIES)
 public class MakeItRain {
 
-    public static final String MOD_ID = "makeitrain";
-    public static final String VERSION = "0.0";
-    public static final String NAME = "Make It Rain!";
-
-    @Instance(value = MakeItRain.MOD_ID)
+    @Instance(ModData.ID)
     public static MakeItRain instance;
 
     // Says where the client and server 'proxy' code is loaded.
-    @SidedProxy(clientSide="ClientProxy", serverSide="CommonProxy")
+    @SidedProxy(clientSide = "MakeItRain.Proxy.ClientProxy", serverSide = "MakeItRain.Proxy.CommonProxy")
     public static CommonProxy proxy;
 
-    @EventHandler // used in 1.6.2
-    //@PreInit    // used in 1.5.2
+    public static Logger logger;
+
+    @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        // Stub Method
+        logger = event.getModLog();
+        logger.info("Starting Make It Rain");
+
+        MakeItRainItem.registerItems();
     }
 
-    @EventHandler // used in 1.6.2
-    //@Init       // used in 1.5.2
+    @EventHandler
     public void load(FMLInitializationEvent event) {
         proxy.registerRenderers();
 
-        Item rainStick = new RainStickItem();
-
-        GameRegistry.registerItem(rainStick, "rainStick");
-
-        // Add the rain stick recipe
-        Object stick = Item.itemRegistry.getObject("stick");
-
-        GameRegistry.addRecipe(new ItemStack(Blocks.diamond_block), " xx", "x x", "xx ", 'x', stick);
+        MakeItRainRecipe.registerCraftingRecipes();
     }
 
-    @EventHandler // used in 1.6.2
-    //@PostInit   // used in 1.5.2
+    @EventHandler
     public void postInit(FMLPostInitializationEvent event) {
         // Stub Method
     }
