@@ -21,3 +21,11 @@
 /patches-/
 # FML changelog
 changelog.txt
+
+gradlew
+gradlew.bat
+MinecraftForge-Credits.txt
+MinecraftForge-License.txt
+LICENSE-fml.txt
+CREDITS-fml.txt
+gradle/wrapper
