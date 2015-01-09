@@ -8,8 +8,7 @@ public class MakeItRainItem {
 
     public static Item rainStickItem;
 
-    public static void registerItems()
-    {
+    public static void registerItems() {
         rainStickItem = new ItemRainStick();
         GameRegistry.registerItem(rainStickItem, "RainStickItem");
     }
