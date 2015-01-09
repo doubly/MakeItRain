@@ -1,11 +1,9 @@
 package MakeItRain;
 
 import MakeItRain.Handler.MakeItRainEventHandler;
-import MakeItRain.Proxy.CommonProxy;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
-import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -22,10 +20,6 @@ public class MakeItRain {
     @Instance(MakeItRain.ID)
     public static MakeItRain instance;
 
-    // Says where the client and server 'proxy' code is loaded.
-    @SidedProxy(clientSide = "MakeItRain.Proxy.ClientProxy", serverSide = "MakeItRain.Proxy.CommonProxy")
-    public static CommonProxy proxy;
-
     public static Logger logger;
 
     @EventHandler
@@ -40,8 +34,6 @@ public class MakeItRain {
 
     @EventHandler
     public void load(FMLInitializationEvent event) {
-        proxy.registerRenderers();
-
         MakeItRainRecipe.registerCraftingRecipes();
     }
 

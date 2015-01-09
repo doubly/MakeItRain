@@ -10,6 +10,6 @@ public class MakeItRainItem {
 
     public static void registerItems() {
         rainStickItem = new ItemRainStick();
-        GameRegistry.registerItem(rainStickItem, "RainStickItem");
+        GameRegistry.registerItem(rainStickItem, rainStickItem.getUnlocalizedName().replace("item.", ""));
     }
 }
